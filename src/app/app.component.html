@@ -1,0 +1,91 @@
+<div class="container mt-5">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" id="name" formControlName="name" class="form-control" />
+      <div *ngIf="name?.invalid && name?.touched" class="text-danger">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Gender</label>
+      <div class="form-check">
+        <input type="radio" id="male" formControlName="gender" value="male" class="form-check-input" />
+        <label for="male" class="form-check-label">Male</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" id="female" formControlName="gender" value="female" class="form-check-input" />
+        <label for="female" class="form-check-label">Female</label>
+      </div>
+      <div *ngIf="gender?.invalid && gender?.touched" class="text-danger">
+        Gender is required.
+      </div>
+    </div>
+
+    <p>Contact information:</p>
+    <hr>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" id="email" formControlName="email" class="form-control" />
+      <label for="phone" class="form-label">Phone</label>
+      <input type="text" id="phone" formControlName="phone" class="form-control" />
+    </div>
+
+
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-secondary me-2" (click)="onCancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit</button>
+    </div>
+  </form>
+
+  <ul class="list-group">
+    <li *ngFor="let user of users" class="list-group-item"
+        [ngClass]="{ 
+          'text-primary': user.gender === 'male', 
+          'text-secondary': user.gender === 'female' 
+        }">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <!-- Name section on the far left, with fixed minimum width -->
+        <span class="me-auto" style="min-width: 100px;">
+          {{ user.name }}
+        </span>
+  
+        <!-- Contact Information and Delete button on the far right -->
+        <div class="d-flex align-items-center ms-3">
+          <!-- Contact Information -->
+          <span class="ms-2">
+            <!-- If email is present, display it -->
+            <span *ngIf="user.email">
+              {{ user.email }}
+            </span>
+  
+            <!-- Add separator (|) between email and phone number only when both exist -->
+            <span *ngIf="user.email && user.phone"> | </span>
+  
+            <!-- If phone number is present, display it -->
+            <span *ngIf="user.phone">
+              {{ user.phone }}
+            </span>
+  
+            <!-- Show 'no contact information' if both email and phone are missing -->
+            <span *ngIf="!user.email && !user.phone" class="ms-2 text-muted">no contact information</span>
+          </span>
+  
+          <!-- Delete button -->
+          <button
+            class="btn btn-sm"
+            [ngClass]="{
+              'btn-male': user.gender === 'male',
+              'btn-female': user.gender === 'female'
+            }"
+            (click)="deleteUser(user.id)">
+            X
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+  
+  
+</div>

@@ -1,0 +1,116 @@
+/* Overall form container styling */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    margin: 5px;
+  }
+  
+  p {
+    font-weight: bold;
+  }
+  
+  /* Gender radio buttons */
+  .form-check-input {
+    margin-right: 10px;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    background-color: #007bff;
+    padding: 8px 16px;
+    color: white;
+    margin-left: 5px;
+  }
+  
+  .btn-secondary {
+    padding: 8px 16px;
+  }
+  
+  .btn-danger {
+    padding: 2px 8px;
+  }
+  
+  
+  /* Users list */
+  .list-group {
+    margin-top: 20px;
+  }
+  
+  .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Male user styling */
+  .list-group-item.text-primary {
+    background-color: lightblue;
+    color: blue;
+  }
+  
+  /* Female user styling */
+  .list-group-item.text-secondary {
+    background-color: pink;
+    color: red;
+  }
+  
+  .btn-sm {
+    font-size: 0.8em;
+    padding: 4px 8px;
+  }
+  
+  .btn-female {
+    background: none;
+    color: red;
+    border: none;
+  }
+  
+  .btn-male {
+    background: none;
+    color: blue;
+    border: none;
+  }
+  
+  /* Make sure the contact information and button align properly */
+  .list-group-item .d-flex {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .form-control {
+      font-size: 14px;
+    }
+  
+    .list-group-item {
+      font-size: 14px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  
